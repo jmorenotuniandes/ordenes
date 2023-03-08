@@ -1,0 +1,17 @@
+[project]
+name = "alpesonline"
+version = "1.0.0"
+authors = [
+  { name="Anderson Santamaria", email="as.santamaria@uniandes.edu.co" },
+]
+description = "Proyecto de ordenes de AlpesOnline"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+pythonpath = [
+  ".", "src",
+]
