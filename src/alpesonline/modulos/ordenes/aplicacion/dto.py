@@ -17,7 +17,7 @@ class OrdenDTO(DTO):
     fecha_actualizacion: str = field(default_factory=str)
     id: str = field(default_factory=str)
     client_id: str = field(default_factory=str)
-    origen: UbicacionDTO = field(default_factory=UbicacionDTO)
-    destino: UbicacionDTO = field(default_factory=UbicacionDTO)
+    origen: UbicacionDTO = None
+    destino: UbicacionDTO = None
     tipo: str = field(default_factory=str)
     productos: list[ProductoDTO] = field(default_factory=list)

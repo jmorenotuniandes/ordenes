@@ -25,6 +25,7 @@ def suscribirse_a_eventos(app=None):
             datos = mensaje.value().data
             print(f'Evento recibido: {datos}')
 
+            #TODO: agregar los demas campos para guardar en BD
             ejecutar_proyeccion(ProyeccionOrdenesLista(datos.id_orden), app=app)
             
             consumidor.acknowledge(mensaje)     

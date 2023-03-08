@@ -67,7 +67,7 @@ class RepositorioEventosOrdenSQLAlchemy(RepositorioEventosOrdenes):
         json_str = parser_payload.encode(orden_evento.data)
         evento_dto = EventosOrden()
         evento_dto.id = str(evento.id)
-        evento_dto.id_entidad = str(evento.id_ruta)
+        evento_dto.id_entidad = str(evento.id_orden)
         evento_dto.fecha_evento = evento.fecha_creacion
         evento_dto.version = str(orden_evento.specversion)
         evento_dto.tipo_evento = evento.__class__.__name__

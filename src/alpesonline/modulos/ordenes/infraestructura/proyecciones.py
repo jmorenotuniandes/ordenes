@@ -17,6 +17,7 @@ class ProyeccionOrden(Proyeccion, ABC):
         ...
 
 class ProyeccionOrdenesLista(ProyeccionOrden):
+    #TODO: agregar los demas campos para guardar en BD
     def __init__(self, id_ruta):
         self.id_ruta = id_ruta
     
@@ -29,7 +30,7 @@ class ProyeccionOrdenesLista(ProyeccionOrden):
         repositorio = fabrica_repositorio.crear_objeto(RepositorioOrdenes)
         
         repositorio.agregar(
-            Orden(id=str(self.id_ruta)))
+            Orden(id=str(self.id_ruta), origen=Ubicacion("123","123"), destino=Ubicacion("123","123")))
         
         db.session.commit()
 

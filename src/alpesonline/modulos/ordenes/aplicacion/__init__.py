@@ -1,7 +1,7 @@
 from pydispatch import dispatcher
 
-from .handlers import HandlerRutaIntegracion
+from .handlers import HandlerOrdenIntegracion
 
 from alpesonline.modulos.ordenes.dominio.eventos import OrdenCreada
 
-dispatcher.connect(HandlerRutaIntegracion.handle_ruta_programada, signal=f'{OrdenCreada.__name__}Integracion')
+dispatcher.connect(HandlerOrdenIntegracion.handle_orden_creada, signal=f'{OrdenCreada.__name__}Integracion')
