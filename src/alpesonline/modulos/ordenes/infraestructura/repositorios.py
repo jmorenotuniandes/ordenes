@@ -55,13 +55,26 @@ class RepositorioEventosOrdenSQLAlchemy(RepositorioEventosOrdenes):
         return self._fabrica_ordenes
 
     def obtener_por_id(self, id: UUID) -> Orden:
-        raise NotImplementedError
-
+        orden_dto = db.session.query(OrdenDTO).filter_by(id=str(id)).one()
+        return self.fabrica_ordenes.crear_objeto(orden_dto, MapadeadorEventosOrden())
+        
     def obtener_todos(self) -> list[Orden]:
         raise NotImplementedError
 
     def agregar(self, evento):
-        raise NotImplementedError
+        orden_evento = self.fabrica_ordenes.crear_objeto(evento, MapadeadorEventosOrden())
+        parser_payload = JsonSchema(orden_evento.data.__class__)
+        json_str = parser_payload.encode(orden_evento.data)
+        evento_dto = EventosOrden()
+        evento_dto.id = str(evento.id)
+        evento_dto.id_entidad = str(evento.id_ruta)
+        evento_dto.fecha_evento = evento.fecha_creacion
+        evento_dto.version = str(orden_evento.specversion)
+        evento_dto.tipo_evento = evento.__class__.__name__
+        evento_dto.formato_contenido = 'JSON'
+        evento_dto.nombre_servicio = str(orden_evento.service_name)
+        evento_dto.contenido = json_str
+        db.session.add(evento_dto)
 
     def actualizar(self, orden: Orden):
         raise NotImplementedError
