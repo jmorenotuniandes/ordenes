@@ -30,14 +30,14 @@ ordenes_productos = db.Table(
 class Producto(db.Model):
     __tablename__ = 'productos'
     id = db.Column(db.String(40), primary_key=True)
-    nombre = db.Column(db.String(20), primary_key=True, nullable=False)
+    nombre = db.Column(db.String(20), primary_key=True, nullable=True)
 
 
 class Orden(db.Model):
     __tablename__ = 'ordenes'
     id = db.Column(db.String(40), primary_key=True)
-    id_cliente = db.Column(db.String(40), nullable=False)
-    tipo = db.Column(db.String(40), nullable=False)
+    id_cliente = db.Column(db.String(40), nullable=True)
+    tipo = db.Column(db.String(40), nullable=True)
     fecha_creacion = db.Column(db.DateTime, nullable=False)
     fecha_actualizacion = db.Column(db.DateTime, nullable=False)
     productos = db.relationship(

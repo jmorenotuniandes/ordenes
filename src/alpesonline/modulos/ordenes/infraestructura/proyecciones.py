@@ -3,6 +3,7 @@ from alpesonline.seedwork.infraestructura.proyecciones import ejecutar_proyeccio
 from alpesonline.modulos.ordenes.infraestructura.fabricas import FabricaRepositorio
 from alpesonline.modulos.ordenes.infraestructura.repositorios import RepositorioOrdenes
 from alpesonline.modulos.ordenes.dominio.entidades import Orden
+from alpesonline.modulos.ordenes.dominio.objetos_valor import Ubicacion
 from alpesonline.modulos.ordenes.infraestructura.dto import Orden as OrdenDTO
 
 from alpesonline.seedwork.infraestructura.utils import millis_a_datetime
